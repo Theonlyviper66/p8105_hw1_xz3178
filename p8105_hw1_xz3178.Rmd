@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 #loading data and summary statistics 
+#Calculate statistics about the variables
 data("penguins", package = "palmerpenguins")
 summary(penguins)
 #dataframe dimension
@@ -37,6 +38,7 @@ ggsave("Figure1.png")
 set.seed(100)
 y = sample(1:3,10,replace=TRUE)
 suppressMessages(library(tidyverse))
+#Create a df with 10 rows and 4 columns
 problem2_df=tibble(
   x = rnorm(10),
   whether_positive = x>0,
@@ -47,7 +49,7 @@ problem2_df=tibble(
 
 
 ```{r,warning=FALSE}
-# mean of each variable in df 
+# mean of each variable in df using the pull function
 mean(pull(problem2_df,var = x))
 mean(pull(problem2_df,var = whether_positive))
 mean(pull(problem2_df,var = character_var))
@@ -57,6 +59,7 @@ mean(pull(problem2_df,var = factor_var))
 The mean value for the numeric column was 0.265 and the mean for the logical column was 0.6. The mean function did not work for the character or the factor data type, and it returned NA instead.
 
 ```{r,eval=FALSE}
+#Convert data type into numeric
 as.numeric(problem2_df$whether_positive)
 as.numeric(problem2_df$character_var)
 as.numeric(problem2_df$factor_var)
